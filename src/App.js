@@ -11,14 +11,14 @@ function allNewDice() {
   for(let i=0; i<10; i++){
     newDiceArray.push({
       value:Math.ceil(Math.random()*6),
-      isHeld:false,
+      isHeld:true,
       id:nanoid()
     })
   }  
   return newDiceArray
 }
 
-const diceElement = newDice.map(die => <Die value={die.value} key={die.id}/>)
+const diceElement = newDice.map(die => <Die value={die.value} key={die.id} isHeld={die.isHeld}/>)
 
 
 function rollDice() {
