@@ -1,19 +1,20 @@
+import Die from "./components/Die"
+
 
 function App() {
   return (
    <main>
      <div className="container">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-
+        <Die value={1}/>
+        <Die value={2}/>
+        <Die value={3}/>
+        <Die value={4}/>
+        <Die value={5}/>
+        <Die value={6}/>
+        <Die value={6}/>
+        <Die value={1}/>
+        <Die value={1}/>
+        <Die value={2}/>
      </div>
    </main>
   );
