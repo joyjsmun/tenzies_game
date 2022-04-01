@@ -5,15 +5,19 @@ import {nanoid} from "nanoid";
 
 function App() {
   const [newDice,setNewDice] = useState(allNewDice())
+
+function generateNewDice() {
+  return {
+    value:Math.ceil(Math.random()*6),
+    isHeld:false,
+    id:nanoid()
+  }
+}
   
 function allNewDice() {
   const newDiceArray = [];
   for(let i=0; i<10; i++){
-    newDiceArray.push({
-      value:Math.ceil(Math.random()*6),
-      isHeld:false,
-      id:nanoid()
-    })
+    newDiceArray.push(generateNewDice())
   }  
   return newDiceArray
 }
@@ -30,7 +34,11 @@ const diceElement = newDice.map(die => <Die value={die.value} holdDice={() => ho
 
 
 function rollDice() {
-  setNewDice(allNewDice())
+  setNewDice(oldDice => oldDice.map(die => {
+    return die.isHeld ?
+      die :
+      generateNewDice()
+  }))
 }
 
   return (
