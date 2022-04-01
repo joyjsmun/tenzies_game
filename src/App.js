@@ -48,17 +48,20 @@ const diceElement = newDice.map(die => <Die value={die.value} holdDice={() => ho
 
 
 function rollDice() {
-  setNewDice(oldDice => oldDice.map(die => {
+  if(!tenzies){setNewDice(oldDice => oldDice.map(die => {
     return die.isHeld ?
       die :
       generateNewDice()
-  }))
+  }))}else{
+    setTenzies(false);
+    setNewDice(allNewDice())
+  }
 }
 
 
   return (
    <main>
-     {tenzies ? <Confetti width={window.innerWidth} height={window.innerHeight} /> : null}
+     {tenzies && <Confetti width={window.innerWidth} height={window.innerHeight} /> }
       <h1 className="title">Tenzies</h1>
             <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
             <div className="dice-container"></div>
