@@ -18,7 +18,11 @@ function allNewDice() {
   return newDiceArray
 }
 
-const diceElement = newDice.map(die => <Die value={die.value} key={die.id} isHeld={die.isHeld}/>)
+function holdDice(id){
+  console.log(id)
+}
+
+const diceElement = newDice.map(die => <Die value={die.value} holdDice={() => holdDice(die.id)} key={die.id} isHeld={die.isHeld}/>)
 
 
 function rollDice() {
